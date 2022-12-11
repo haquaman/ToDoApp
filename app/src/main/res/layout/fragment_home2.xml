@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Home">
+
+    <TextView
+        android:id="@+id/homePageHeaderTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:fontFamily="@font/poppins_bold"
+        android:text="@string/merhaba_hakan"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.069"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023" />
+
+    <TextView
+        android:id="@+id/homepageSubTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="@string/listeye_bir_g_z_at"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/homePageHeaderTextView" />
+
+    <Button
+        android:id="@+id/taskListBtn"
+        android:layout_width="350dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="35dp"
+        android:fontFamily="@font/poppins_bold"
+        android:text="@string/g_rev_listesi"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        app:cornerRadius="75dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/homepageSubTitle" />
+
+    <HorizontalScrollView
+        android:id="@+id/homePageList"
+        android:layout_width="348dp"
+        android:layout_height="218dp"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/taskListBtn">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:divider="@android:drawable/dark_header"
+            android:dividerPadding="50dp"
+            android:orientation="horizontal"
+            android:showDividers="middle|beginning|end">
+
+            <Button
+                android:id="@+id/schoolBtn"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_marginRight="20dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Okul"
+                android:textSize="16sp"
+                app:cornerRadius="30dp" />
+
+            <Button
+                android:id="@+id/homeBtn"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_marginRight="20dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Ev"
+                android:textSize="16sp"
+                app:cornerRadius="30dp" />
+
+            <Button
+                android:id="@+id/workBtn"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_marginRight="20dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/poppins_bold"
+                android:text="İş"
+                android:textSize="16sp"
+                app:cornerRadius="30dp" />
+
+            <Button
+                android:id="@+id/sporBtn"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_marginRight="20dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/poppins_bold"
+                android:text="spor"
+                android:textSize="16sp"
+                app:cornerRadius="30dp" />
+
+            <Button
+                android:id="@+id/gBtn"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_marginRight="20dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Günlük"
+                android:textSize="16sp"
+                app:cornerRadius="30dp" />
+
+            <Button
+                android:id="@+id/otherBtn"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Diğer"
+                android:textSize="16sp"
+                app:cornerRadius="30dp" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="357dp"
+        android:layout_height="280dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="36dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/homePageList"
+        app:srcCompat="@drawable/q" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

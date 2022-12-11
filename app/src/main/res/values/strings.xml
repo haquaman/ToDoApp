@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">ToDoApp</string>
+    <string name="merhaba_hakan">Merhaba Hakan</string>
+    <string name="listeye_bir_g_z_at">Listeye bir göz at !</string>
+    <string name="g_rev_listesi">Görev Listesi</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="g_revi_kaydet">Görevi Kaydet</string>
+    <string name="gunluk_addpages">Günlük</string>
+    <string name="tanim_addpages">Tanım</string>
+    <string name="kategori_addpages">Kategori</string>
+    <string name="userNameHint">Kullanıcı Adınızı Giriniz...</string>
+    <string name="bDayText">Doğum Günü</string>
+    <string name="save">Kaydet</string>
+    <string name="soy_ad">Soy Ad</string>
+    <string name="enterSurname">Soy Adınızı Giriniz...</string>
+    <string name="login">Giriş Yap</string>
+    <string name="logup">KAYDOL</string>
+</resources>
