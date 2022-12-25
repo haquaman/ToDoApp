@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.*
 
 // TODO: Rename parameter arguments, choose names that match
@@ -24,6 +25,7 @@ class List : Fragment(), AdapterView.OnItemClickListener{
     private var param2: String? = null
     private var itemAdapters:ItemAdapters ?= null
     private  var arrayList:ArrayList<ItemList> ?= null
+    var currentUser : User = User(-1,"a","b","c","d")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,18 +48,30 @@ class List : Fragment(), AdapterView.OnItemClickListener{
         var user = "Hakan"
         text.setText("Merhaba $user")
         */
+        var arg = this.arguments
+        var id = arg?.get("id")
+        val database = (activity as HomeAcivity).openOrCreateDatabase("Users", AppCompatActivity.MODE_PRIVATE,null)
+        val cursor = database.rawQuery("SELECT * FROM users WHERE id = $id",null)
+        //(userName, userSurName, userPass, userNickName)
+        val idx = cursor.getColumnIndex("id")
+        val userNamex = cursor.getColumnIndex("userName")
+        val userSurNamex = cursor.getColumnIndex("userSurName")
+        val userPassx = cursor.getColumnIndex("userPass")
+        val userNickNamex = cursor.getColumnIndex("userNickName")
+        if(cursor.moveToNext()){
+            val n = cursor.getString(userNamex)
+            val id = cursor.getInt(idx)
+            val sn = cursor.getString(userSurNamex)
+            val p = cursor.getString(userPassx)
+            val nick = cursor.getString(userNickNamex)
+            currentUser = User(id,n,sn,p,nick)
+        }
+        cursor.close()
         var listView = view.findViewById<ListView>(R.id.card_view_list_view)
-        arrayList = ArrayList()
-        arrayList!!.add(ItemList(R.drawable.taskicon,"C1","Title1","task1","01/03/1999","devam ediyor","sdnflksjdanfkljasdnfkljsadnflkjsdnflkjnsadlkjfnsdlkjfnlksdjanfalkjsdnflkjsdnflkjasdnflkjnsadlkjfndsalkjnf lkjsdanfklajdsnfklj ndslfkjnsadlkfn aklsdjfnlk asdnflkjdsan flkjsdn lkfjdanslk fjansdlkjfn askldjn flksdjn flkjsdnfkljasdnfkljdasnfkljsdnfkljsdnfkljasdnfkljsad"))
-        arrayList!!.add(ItemList(R.drawable.taskicon,"C2","Title2","task1","01/03/1999","devam ediyor","ilk görev datı"))
-        arrayList!!.add(ItemList(R.drawable.taskicon,"C3","Title3","task1","01/03/1999","devam ediyor","ilk görev datı"))
-        arrayList!!.add(ItemList(R.drawable.taskicon,"C4","Title4","task1","01/03/1999","devam ediyor","ilk görev datı"))
-        arrayList!!.add(ItemList(R.drawable.taskicon,"C5","Title5","task1","01/03/1999","devam ediyor","ilk görev datı"))
-        arrayList!!.add(ItemList(R.drawable.taskicon,"C6","Title6","task1","01/03/1999","devam ediyor","ilk görev datı"))
-        arrayList!!.add(ItemList(R.drawable.taskicon,"C7","Title7","task1","01/03/1999","devam ediyor","ilk görev datı"))
-        arrayList!!.add(ItemList(R.drawable.taskicon,"C8","Title8","task1","01/03/1999","devam ediyor","ilk görev datı"))
-        arrayList!!.add(ItemList(R.drawable.taskicon,"C9","Title9","task1","01/03/1999","devam ediyor","ilk görev datı"))
-        itemAdapters = ItemAdapters(requireContext().applicationContext,arrayList!!)
+        //arrayList = ArrayList()
+        //arrayList!!.add(ItemList(R.drawable.taskicon,"C2","Title2","task1","01/03/1999","devam ediyor","ilk görev datı",currentUser.id))
+        itemAdapters = ItemAdapters(requireContext().applicationContext)
+        itemAdapters!!.arrayList!!.add(ItemList(R.drawable.taskicon,"C2","Title2","task1","01/03/1999","devam ediyor","ilk görev datı",currentUser.id))
         listView?.adapter = itemAdapters
         listView?.onItemClickListener = this
         return view

@@ -5,6 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.car_view_item_layout_list.view.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -18,6 +21,7 @@ private const val ARG_PARAM2 = "param2"
  */
 class Profile : Fragment() {
     // TODO: Rename and change types of parameters
+    var currentUser : User = User(-1,"a","b","c","d")
     private var param1: String? = null
     private var param2: String? = null
 
@@ -33,8 +37,33 @@ class Profile : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false)
+        val view =  inflater.inflate(R.layout.fragment_profile, container, false)
+        view.button3
+        val nameText = view.findViewById<TextView>(R.id.nameEditText)
+        val surNameTExt = view.findViewById<TextView>(R.id.surNameEditText)
+        var arg = this.arguments
+        var id = arg?.get("id")
+        val database = (activity as HomeAcivity).openOrCreateDatabase("Users", AppCompatActivity.MODE_PRIVATE,null)
+        val cursor = database.rawQuery("SELECT * FROM users WHERE id = $id",null)
+        //(userName, userSurName, userPass, userNickName)
+        val idx = cursor.getColumnIndex("id")
+        val userNamex = cursor.getColumnIndex("userName")
+        val userSurNamex = cursor.getColumnIndex("userSurName")
+        val userPassx = cursor.getColumnIndex("userPass")
+        val userNickNamex = cursor.getColumnIndex("userNickName")
+        if(cursor.moveToNext()){
+            val n = cursor.getString(userNamex)
+            val id = cursor.getInt(idx)
+            val sn = cursor.getString(userSurNamex)
+            val p = cursor.getString(userPassx)
+            val nick = cursor.getString(userNickNamex)
+            currentUser = User(id,n,sn,p,nick)
+        }
+        val strName = currentUser.userName
+        nameText.text = currentUser.userName
+        surNameTExt.text = currentUser.userSurName
+        cursor.close()
+        return view
     }
 
     companion object {

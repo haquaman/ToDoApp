@@ -8,7 +8,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import org.w3c.dom.Text
 
-class ItemAdapters(var context: Context , var arrayList: ArrayList<ItemList>) : BaseAdapter() {
+class ItemAdapters(var context: Context) : BaseAdapter() {
+
+    var arrayList: ArrayList<ItemList> = ArrayList<ItemList>()
+
     override fun getCount(): Int {
         return arrayList.size
     }
@@ -19,6 +22,10 @@ class ItemAdapters(var context: Context , var arrayList: ArrayList<ItemList>) : 
 
     override fun getItemId(p0: Int): Long {
         return p0.toLong()
+    }
+
+    fun addItem(item: ItemList){
+        arrayList.add(item)
     }
 
     override fun getView(p0: Int, p1: View?, p2: ViewGroup?): View {

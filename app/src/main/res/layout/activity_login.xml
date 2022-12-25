@@ -16,6 +16,7 @@
         android:width="350dp"
         android:backgroundTint="@color/purple_500"
         android:fontFamily="@font/poppins_bold"
+        android:onClick="logInClick"
         android:text="@string/login"
         android:textColor="@color/white"
         android:textColorHint="@color/white"

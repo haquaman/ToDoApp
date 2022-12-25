@@ -11,7 +11,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-        val intent = Intent(applicationContext,HomeAcivity::class.java)
+        val intent = Intent(applicationContext,LogUp::class.java)
         intent.putExtra("data","ikinci sayfa")
         startActivity(intent)
 

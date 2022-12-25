@@ -114,6 +114,7 @@
         android:width="350dp"
         android:backgroundTint="@color/purple_500"
         android:fontFamily="@font/poppins_bold"
+        android:onClick="logUpClick"
         android:text="@string/logup"
         android:textColor="@color/white"
         android:textColorHint="@color/white"

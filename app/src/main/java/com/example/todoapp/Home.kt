@@ -1,11 +1,14 @@
 package com.example.todoapp
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.fragment_home2.*
 
 // TODO: Rename parameter arguments, choose names that match
@@ -20,6 +23,7 @@ private const val ARG_PARAM2 = "param2"
  */
 class Home : Fragment() {
     // TODO: Rename and change types of parameters
+    var currentUser : User = User(-1,"a","b","c","d")
     private var param1: String? = null
     private var param2: String? = null
 
@@ -41,10 +45,27 @@ class Home : Fragment() {
 
         val view =  inflater.inflate(R.layout.fragment_home2, container, false)
         val text = view.findViewById<TextView>(R.id.homePageHeaderTextView)
-        var user = "Hakan"
-        text.setText("Merhaba $user")
-
-
+        var arg = this.arguments
+        var id = arg?.get("id")
+        val database = (activity as HomeAcivity).openOrCreateDatabase("Users", AppCompatActivity.MODE_PRIVATE,null)
+        val cursor = database.rawQuery("SELECT * FROM users WHERE id = $id",null)
+        //(userName, userSurName, userPass, userNickName)
+        val idx = cursor.getColumnIndex("id")
+        val userNamex = cursor.getColumnIndex("userName")
+        val userSurNamex = cursor.getColumnIndex("userSurName")
+        val userPassx = cursor.getColumnIndex("userPass")
+        val userNickNamex = cursor.getColumnIndex("userNickName")
+        if(cursor.moveToNext()){
+            val n = cursor.getString(userNamex)
+            val id = cursor.getInt(idx)
+            val sn = cursor.getString(userSurNamex)
+            val p = cursor.getString(userPassx)
+            val nick = cursor.getString(userNickNamex)
+            currentUser = User(id,n,sn,p,nick)
+        }
+        val strName = currentUser.userName
+        text.setText("Merhaba $strName")
+        cursor.close()
         return view
 
     }
