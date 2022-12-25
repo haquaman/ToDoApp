@@ -75,7 +75,7 @@ class Add : Fragment() {
             statement.bindString(1,tastTitle.text.toString())
             statement.bindString(2,taskCat.text.toString())
             statement.bindString(3,taskDate.text.toString())
-            statement.bindString(4,"D")
+            statement.bindString(4,"d")
             statement.bindString(5,taskDesc.text.toString())
             statement.bindString(6,currentUser.id.toString())
             statement.execute()
