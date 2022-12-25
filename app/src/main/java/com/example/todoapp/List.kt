@@ -43,6 +43,37 @@ class List : Fragment(), AdapterView.OnItemClickListener{
     ): View? {
         // Inflate the layout for this fragment
         val view =  inflater.inflate(R.layout.fragment_list, container, false)
+        val completed = view.findViewById<Button>(R.id.allTaskBtn2)
+        var listView = view.findViewById<ListView>(R.id.card_view_list_view)
+        completed.setOnClickListener(){
+            var ar = listOf<String>("görev1").toTypedArray()
+            val database2 = (activity as HomeAcivity).openOrCreateDatabase("Tasks", AppCompatActivity.MODE_PRIVATE,null)
+            val cursor2 = database2.rawQuery("SELECT * FROM tasks WHERE title = ?",ar)
+            val titlex = cursor2.getColumnIndex("title")
+            val catx = cursor2.getColumnIndex("cat")
+            val datex = cursor2.getColumnIndex("date")
+            val statusx = cursor2.getColumnIndex("status")
+            val detailx = cursor2.getColumnIndex("detail")
+            val userx = cursor2.getColumnIndex("user")
+            var arrayList2: ArrayList<ItemList> = ArrayList<ItemList>()
+            itemAdapters = ItemAdapters(requireContext().applicationContext)
+            listView?.adapter = itemAdapters
+            listView?.onItemClickListener = this
+            while(cursor2.moveToNext()) {
+                val title = cursor2.getString(titlex)
+                val cat = cursor2.getString(catx)
+                val date = cursor2.getString(datex)
+                val status = cursor2.getString(statusx)
+                val detail = cursor2.getString(detailx)
+                val user = cursor2.getInt(userx)
+                val tempItem =
+                    ItemList(R.drawable.taskicon, cat, title, "tesk", date, status, detail, user)
+                arrayList2.add(tempItem)
+                itemAdapters!!.arrayList = arrayList2
+
+            }
+            cursor2.close()
+        }
         /*
         val text = view.findViewById<TextView>(R.id.homePageHeaderTextView)
         var user = "Hakan"
@@ -67,13 +98,34 @@ class List : Fragment(), AdapterView.OnItemClickListener{
             currentUser = User(id,n,sn,p,nick)
         }
         cursor.close()
-        var listView = view.findViewById<ListView>(R.id.card_view_list_view)
         //arrayList = ArrayList()
         //arrayList!!.add(ItemList(R.drawable.taskicon,"C2","Title2","task1","01/03/1999","devam ediyor","ilk görev datı",currentUser.id))
+        val database2 = (activity as HomeAcivity).openOrCreateDatabase("Tasks", AppCompatActivity.MODE_PRIVATE,null)
+        val cursor2 = database2.rawQuery("SELECT * FROM tasks",null)
+        val titlex = cursor2.getColumnIndex("title")
+        val catx = cursor2.getColumnIndex("cat")
+        val datex = cursor2.getColumnIndex("date")
+        val statusx = cursor2.getColumnIndex("status")
+        val detailx = cursor2.getColumnIndex("detail")
+        val userx = cursor2.getColumnIndex("user")
+
         itemAdapters = ItemAdapters(requireContext().applicationContext)
-        itemAdapters!!.arrayList!!.add(ItemList(R.drawable.taskicon,"C2","Title2","task1","01/03/1999","devam ediyor","ilk görev datı",currentUser.id))
         listView?.adapter = itemAdapters
         listView?.onItemClickListener = this
+        while(cursor2.moveToNext()) {
+            val title = cursor2.getString(titlex)
+            val cat = cursor2.getString(catx)
+            val date = cursor2.getString(datex)
+            val status = cursor2.getString(statusx)
+            val detail = cursor2.getString(detailx)
+            val user = cursor2.getInt(userx)
+            val tempItem =
+                ItemList(R.drawable.taskicon, cat, title, "tesk", date, status, detail, user)
+            itemAdapters!!.arrayList!!.add(tempItem)
+
+        }
+        cursor2.close()
+
         return view
     }
 

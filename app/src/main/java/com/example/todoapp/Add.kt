@@ -40,7 +40,7 @@ class Add : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view: View = inflater!!.inflate(R.layout.fragment_add, container, false)
+        val view: View = inflater.inflate(R.layout.fragment_add, container, false)
         var arg = this.arguments
         var id = arg?.get("id")
         val database = (activity as HomeAcivity).openOrCreateDatabase("Users", AppCompatActivity.MODE_PRIVATE,null)
@@ -60,18 +60,25 @@ class Add : Fragment() {
             currentUser = User(id,n,sn,p,nick)
         }
         cursor.close()
-        view.allTaskBtn12.setOnClickListener { view ->
-            var tastTitle = view.findViewById<TextView>(R.id.editTextTextPersonName)
-            var taskDate = view.findViewById<TextView>(R.id.editTextTextPersonName2)
-            var taskDesc = view.findViewById<TextView>(R.id.editTextTextMultiLine)
-            var taskCat = view.findViewById<TextView>(R.id.editTextTextPersonName4)
-            var listView = view.findViewById<ListView>(R.id.card_view_list_view)
-            itemAdapters = ItemAdapters(requireContext().applicationContext)
-            itemAdapters!!.addItem(ItemList(R.drawable.taskicon,"deneme123","Title2","task1","01/03/1999","devam ediyor","ilk görev datı",currentUser.id))
-            listView?.adapter = itemAdapters
+        view.allTaskBtn12.setOnClickListener {
 
 
+            val tastTitle = view.findViewById<TextView>(R.id.editTextTextPersonName)
+            val taskDate = view.findViewById<TextView>(R.id.editTextTextPersonName2)
+            val taskDesc = view.findViewById<TextView>(R.id.editTextTextMultiLine)
+            val taskCat = view.findViewById<TextView>(R.id.editTextTextPersonName4)
 
+            val database = (activity as HomeAcivity).openOrCreateDatabase("Tasks", AppCompatActivity.MODE_PRIVATE,null)
+            database.execSQL("CREATE TABLE IF NOT EXISTS tasks (title VARCHAR, cat VARCHAR, date VARCHAR, status VARCHAR, detail VARCHAR, user INTEGER)")
+            val sqlString = "INSERT INTO tasks (title, cat, date, status, detail, user) VALUES (?, ?, ?, ?, ?, ?)"
+            val statement = database.compileStatement(sqlString)
+            statement.bindString(1,tastTitle.text.toString())
+            statement.bindString(2,taskCat.text.toString())
+            statement.bindString(3,taskDate.text.toString())
+            statement.bindString(4,"D")
+            statement.bindString(5,taskDesc.text.toString())
+            statement.bindString(6,currentUser.id.toString())
+            statement.execute()
 
         }
 
