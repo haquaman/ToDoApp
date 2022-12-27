@@ -83,7 +83,7 @@
         android:layout_marginTop="12dp"
         android:backgroundTint="@color/white"
         android:fontFamily="@font/poppins_bold"
-        android:text="Kategoriler"
+        android:text="Yenile"
         android:textColor="@color/black"
         app:cornerRadius="20dp"
         app:layout_constraintStart_toStartOf="parent"

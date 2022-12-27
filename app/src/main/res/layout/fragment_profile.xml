@@ -26,6 +26,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/surNameEditText" />
 
+    <Button
+        android:id="@+id/logoutBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="65dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="20dp"
+        android:width="350dp"
+        android:backgroundTint="@color/design_default_color_error"
+        android:fontFamily="@font/poppins_bold"
+        android:text="ÇIKIŞ"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        app:cornerRadius="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/savedProfileBtn" />
+
     <TextView
         android:id="@+id/surNameHeader"
         android:layout_width="wrap_content"

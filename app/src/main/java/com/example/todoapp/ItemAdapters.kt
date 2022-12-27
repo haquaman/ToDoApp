@@ -38,11 +38,11 @@ class ItemAdapters(var context: Context) : BaseAdapter() {
         deleteBTn.setOnClickListener(){ view ->
 
             var deletedUser: ItemList = getItem(p0) as ItemList
-            var dtit = deletedUser.detail
+            var dtit = deletedUser.idT
             arrayList.removeAt(p0)
             var templist: ArrayList<ItemList> = ArrayList<ItemList>()
             val database = (context.applicationContext).openOrCreateDatabase("Tasks", AppCompatActivity.MODE_PRIVATE,null)
-            database.execSQL("DELETE FROM  tasks WHERE detail = ?", arrayOf(dtit))
+            database.execSQL("DELETE FROM  tasks WHERE idT = ?", arrayOf(dtit))
             templist = arrayList
             //notifyDataSetChanged()
 
@@ -63,16 +63,16 @@ class ItemAdapters(var context: Context) : BaseAdapter() {
         chbox.setOnClickListener(){
             if(chbox.isChecked == true){
                 var deletedUser: ItemList = getItem(p0) as ItemList
-                var dtit = deletedUser.detail
+                var dtit = deletedUser.idT
                 val database = (context.applicationContext).openOrCreateDatabase("Tasks", AppCompatActivity.MODE_PRIVATE,null)
-                database.execSQL("UPDATE tasks SET status = ? WHERE detail = ?", arrayOf("t",dtit))
+                database.execSQL("UPDATE tasks SET status = ? WHERE idT = ?", arrayOf("t",dtit))
                 database.close()
             }
             else{
                 var deletedUser: ItemList = getItem(p0) as ItemList
-                var dtit = deletedUser.detail
+                var dtit = deletedUser.idT
                 val database = (context.applicationContext).openOrCreateDatabase("Tasks", AppCompatActivity.MODE_PRIVATE,null)
-                database.execSQL("UPDATE tasks SET status = ? WHERE detail = ?", arrayOf("d",dtit))
+                database.execSQL("UPDATE tasks SET status = ? WHERE idT = ?", arrayOf("d",dtit))
                 database.close()
             }
         }
@@ -89,10 +89,6 @@ class ItemAdapters(var context: Context) : BaseAdapter() {
         details.text = items.detail
         date.text = items.date
         icons.setImageResource(items.icons!!)
-
-
-
-
         return view!!
     }
 }

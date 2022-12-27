@@ -1,13 +1,17 @@
 package com.example.todoapp
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.car_view_item_layout_list.view.*
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -41,8 +45,32 @@ class Profile : Fragment() {
         view.button3
         val nameText = view.findViewById<TextView>(R.id.nameEditText)
         val surNameTExt = view.findViewById<TextView>(R.id.surNameEditText)
+        val profileBtn = view.findViewById<Button>(R.id.savedProfileBtn)
+        val logOutBtn = view.findViewById<Button>(R.id.logoutBtn)
         var arg = this.arguments
         var id = arg?.get("id")
+
+
+
+        logOutBtn.setOnClickListener(){
+            val intent = Intent(activity, LogUp::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            requireActivity().startActivity(intent)
+        }
+
+
+        //update Profile settings
+        profileBtn.setOnClickListener(){
+            val tempName = nameText.text.toString()
+            val tempSurname = surNameTExt.text.toString()
+            val updateDatabase = (activity as HomeAcivity).openOrCreateDatabase("Users", AppCompatActivity.MODE_PRIVATE,null)
+            updateDatabase.execSQL("UPDATE users SET userName = ? WHERE id = ?", arrayOf(tempName,id))
+            updateDatabase.execSQL("UPDATE users SET userSurName = ? WHERE id = ?", arrayOf(tempSurname,id))
+            updateDatabase.close()
+            val toast = Toast.makeText((activity as HomeAcivity), "Kullanıcı bilgileriniz güncellenmiştir", Toast.LENGTH_LONG)
+            toast.show()
+        }
+
         val database = (activity as HomeAcivity).openOrCreateDatabase("Users", AppCompatActivity.MODE_PRIVATE,null)
         val cursor = database.rawQuery("SELECT * FROM users WHERE id = $id",null)
         //(userName, userSurName, userPass, userNickName)

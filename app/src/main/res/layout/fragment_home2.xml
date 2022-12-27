@@ -28,124 +28,31 @@
         android:layout_marginStart="35dp"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/poppins_medium"
-        android:text="@string/listeye_bir_g_z_at"
+        android:text="Görevlerini Tamamlamayı Unutma !!!"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/homePageHeaderTextView" />
-
-    <Button
-        android:id="@+id/taskListBtn"
-        android:layout_width="350dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="35dp"
-        android:fontFamily="@font/poppins_bold"
-        android:text="@string/g_rev_listesi"
-        android:textAlignment="center"
-        android:textStyle="bold"
-        app:cornerRadius="75dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/homepageSubTitle" />
-
-    <HorizontalScrollView
-        android:id="@+id/homePageList"
-        android:layout_width="348dp"
-        android:layout_height="218dp"
-        android:layout_marginStart="31dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="32dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/taskListBtn">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:divider="@android:drawable/dark_header"
-            android:dividerPadding="50dp"
-            android:orientation="horizontal"
-            android:showDividers="middle|beginning|end">
-
-            <Button
-                android:id="@+id/schoolBtn"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:layout_marginRight="20dp"
-                android:layout_weight="1"
-                android:fontFamily="@font/poppins_bold"
-                android:text="Okul"
-                android:textSize="16sp"
-                app:cornerRadius="30dp" />
-
-            <Button
-                android:id="@+id/homeBtn"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:layout_marginRight="20dp"
-                android:layout_weight="1"
-                android:fontFamily="@font/poppins_bold"
-                android:text="Ev"
-                android:textSize="16sp"
-                app:cornerRadius="30dp" />
-
-            <Button
-                android:id="@+id/workBtn"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:layout_marginRight="20dp"
-                android:layout_weight="1"
-                android:fontFamily="@font/poppins_bold"
-                android:text="İş"
-                android:textSize="16sp"
-                app:cornerRadius="30dp" />
-
-            <Button
-                android:id="@+id/sporBtn"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:layout_marginRight="20dp"
-                android:layout_weight="1"
-                android:fontFamily="@font/poppins_bold"
-                android:text="spor"
-                android:textSize="16sp"
-                app:cornerRadius="30dp" />
-
-            <Button
-                android:id="@+id/gBtn"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:layout_marginRight="20dp"
-                android:layout_weight="1"
-                android:fontFamily="@font/poppins_bold"
-                android:text="Günlük"
-                android:textSize="16sp"
-                app:cornerRadius="30dp" />
-
-            <Button
-                android:id="@+id/otherBtn"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:layout_weight="1"
-                android:fontFamily="@font/poppins_bold"
-                android:text="Diğer"
-                android:textSize="16sp"
-                app:cornerRadius="30dp" />
-        </LinearLayout>
-    </HorizontalScrollView>
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="357dp"
         android:layout_height="280dp"
         android:layout_marginStart="35dp"
-        android:layout_marginTop="13dp"
         android:layout_marginEnd="36dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.411"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/homePageList"
+        app:layout_constraintTop_toBottomOf="@+id/imageView7"
         app:srcCompat="@drawable/q" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="358dp"
+        android:layout_height="340dp"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/m6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/homepageSubTitle" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

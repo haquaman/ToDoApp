@@ -9,6 +9,7 @@ class ItemList {
     var status : String ?= null
     var detail : String ?= null
     var user : Int ?= 1
+    var idT : Int ?=1
 
     constructor(
         icons: Int?,
@@ -18,7 +19,8 @@ class ItemList {
         date: String?,
         status: String?,
         detail: String?,
-        user: Int?
+        user: Int?,
+        idT : Int?
     ) {
         this.icons = icons
         this.category = category
@@ -28,5 +30,6 @@ class ItemList {
         this.status = status
         this.detail = detail
         this.user = user
+        this.idT = idT
     }
 }

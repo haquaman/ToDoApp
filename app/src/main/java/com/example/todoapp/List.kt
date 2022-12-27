@@ -62,6 +62,41 @@ class List : Fragment(), AdapterView.OnItemClickListener{
         val completedOperation = view.findViewById<Button>(R.id.allTaskBtn3)
         val todayOperation = view.findViewById<Button>(R.id.allTaskBtn5)
         val doneOperation = view.findViewById<Button>(R.id.allTaskBtn6)
+        val refreshBtnOperation = view.findViewById<Button>(R.id.allTaskBtn4)
+
+
+        refreshBtnOperation.setOnClickListener(){
+            var s9 = listOf<String>(id.toString()).toTypedArray()
+            val database9 = (activity as HomeAcivity).openOrCreateDatabase("Tasks", AppCompatActivity.MODE_PRIVATE,null)
+            val cursor9 = database9.rawQuery("SELECT * FROM tasks WHERE user = ?",s9)
+            val titlex = cursor9.getColumnIndex("title")
+            val catx = cursor9.getColumnIndex("cat")
+            val datex = cursor9.getColumnIndex("date")
+            val statusx = cursor9.getColumnIndex("status")
+            val detailx = cursor9.getColumnIndex("detail")
+            val userx = cursor9.getColumnIndex("user")
+            val idtx = cursor9.getColumnIndex("idT")
+            var arrayList9: ArrayList<ItemList> = ArrayList<ItemList>()
+            while(cursor9.moveToNext()) {
+                val title = cursor9.getString(titlex)
+                val cat = cursor9.getString(catx)
+                val date = cursor9.getString(datex)
+                val status = cursor9.getString(statusx)
+                val detail = cursor9.getString(detailx)
+                val user = cursor9.getInt(userx)
+                val idT = cursor9.getInt(idtx)
+                val tempItem =
+                    ItemList(R.drawable.taskicon, cat, title, "tesk", date, status, detail, user,idT)
+                arrayList9.add(tempItem)
+
+            }
+
+            itemAdapters = ItemAdapters(requireContext().applicationContext)
+            listView?.adapter = itemAdapters
+            listView?.onItemClickListener = this
+            itemAdapters!!.arrayList = arrayList9
+            cursor9.close()
+        }
 
 
         doneOperation.setOnClickListener(){
@@ -80,6 +115,7 @@ class List : Fragment(), AdapterView.OnItemClickListener{
             val statusx = cursor5.getColumnIndex("status")
             val detailx = cursor5.getColumnIndex("detail")
             val userx = cursor5.getColumnIndex("user")
+            val idtx = cursor5.getColumnIndex("idT")
             var arrayList5: ArrayList<ItemList> = ArrayList<ItemList>()
             while(cursor5.moveToNext()) {
                 val date = cursor5.getString(datex)
@@ -91,8 +127,9 @@ class List : Fragment(), AdapterView.OnItemClickListener{
                     val status = cursor5.getString(statusx)
                     val detail = cursor5.getString(detailx)
                     val user = cursor5.getInt(userx)
+                    val idT = cursor5.getInt(idtx)
                     val tempItem =
-                        ItemList(R.drawable.taskicon, cat, title, "tesk", date, status, detail, user)
+                        ItemList(R.drawable.taskicon, cat, title, "tesk", date, status, detail, user,idT)
                     arrayList5.add(tempItem)
                 }
 
@@ -119,6 +156,7 @@ class List : Fragment(), AdapterView.OnItemClickListener{
             val statusx = cursor4.getColumnIndex("status")
             val detailx = cursor4.getColumnIndex("detail")
             val userx = cursor4.getColumnIndex("user")
+            val idtx = cursor4.getColumnIndex("idT")
             var arrayList4: ArrayList<ItemList> = ArrayList<ItemList>()
             while(cursor4.moveToNext()) {
                 val title = cursor4.getString(titlex)
@@ -127,8 +165,9 @@ class List : Fragment(), AdapterView.OnItemClickListener{
                 val status = cursor4.getString(statusx)
                 val detail = cursor4.getString(detailx)
                 val user = cursor4.getInt(userx)
+                val idT = cursor4.getInt(idtx)
                 val tempItem =
-                    ItemList(R.drawable.taskicon, cat, title, "tesk", date, status, detail, user)
+                    ItemList(R.drawable.taskicon, cat, title, "tesk", date, status, detail, user,idT)
                 arrayList4.add(tempItem)
             }
             itemAdapters = ItemAdapters(requireContext().applicationContext)
@@ -150,6 +189,7 @@ class List : Fragment(), AdapterView.OnItemClickListener{
             val statusx = cursor1.getColumnIndex("status")
             val detailx = cursor1.getColumnIndex("detail")
             val userx = cursor1.getColumnIndex("user")
+            val idtx = cursor1.getColumnIndex("idT")
             var arrayList1: ArrayList<ItemList> = ArrayList<ItemList>()
             while(cursor1.moveToNext()) {
                 val title = cursor1.getString(titlex)
@@ -158,8 +198,9 @@ class List : Fragment(), AdapterView.OnItemClickListener{
                 val status = cursor1.getString(statusx)
                 val detail = cursor1.getString(detailx)
                 val user = cursor1.getInt(userx)
+                val idT = cursor1.getInt(idtx)
                 val tempItem =
-                    ItemList(R.drawable.taskicon, cat, title, "tesk", date, status, detail, user)
+                    ItemList(R.drawable.taskicon, cat, title, "tesk", date, status, detail, user,idT)
                 arrayList1.add(tempItem)
 
             }
@@ -180,6 +221,7 @@ class List : Fragment(), AdapterView.OnItemClickListener{
             val statusx = cursor2.getColumnIndex("status")
             val detailx = cursor2.getColumnIndex("detail")
             val userx = cursor2.getColumnIndex("user")
+            val idtx = cursor2.getColumnIndex("idT")
             var arrayList21: ArrayList<ItemList> = ArrayList<ItemList>()
             while(cursor2.moveToNext()) {
                 val title = cursor2.getString(titlex)
@@ -188,8 +230,9 @@ class List : Fragment(), AdapterView.OnItemClickListener{
                 val status = cursor2.getString(statusx)
                 val detail = cursor2.getString(detailx)
                 val user = cursor2.getInt(userx)
+                val idT = cursor2.getInt(idtx)
                 val tempItem =
-                    ItemList(R.drawable.taskicon, cat, title, "tesk", date, status, detail, user)
+                    ItemList(R.drawable.taskicon, cat, title, "tesk", date, status, detail, user,idT)
                 arrayList21.add(tempItem)
             }
             itemAdapters = ItemAdapters(requireContext().applicationContext)
@@ -209,6 +252,7 @@ class List : Fragment(), AdapterView.OnItemClickListener{
             val statusx = cursor3.getColumnIndex("status")
             val detailx = cursor3.getColumnIndex("detail")
             val userx = cursor3.getColumnIndex("user")
+            val idtx = cursor3.getColumnIndex("idT")
             var arrayList3: ArrayList<ItemList> = ArrayList<ItemList>()
             while(cursor3.moveToNext()) {
                 val title = cursor3.getString(titlex)
@@ -217,8 +261,9 @@ class List : Fragment(), AdapterView.OnItemClickListener{
                 val status = cursor3.getString(statusx)
                 val detail = cursor3.getString(detailx)
                 val user = cursor3.getInt(userx)
+                val idT = cursor3.getInt(idtx)
                 val tempItem =
-                    ItemList(R.drawable.taskicon, cat, title, "tesk", date, status, detail, user)
+                    ItemList(R.drawable.taskicon, cat, title, "tesk", date, status, detail, user,idT)
                 arrayList3.add(tempItem)
 
             }
@@ -254,9 +299,10 @@ class List : Fragment(), AdapterView.OnItemClickListener{
         cursor.close()
         //arrayList = ArrayList()
         //arrayList!!.add(ItemList(R.drawable.taskicon,"C2","Title2","task1","01/03/1999","devam ediyor","ilk görev datı",currentUser.id))
+        var sAll = listOf<String>(id.toString()).toTypedArray()
         val database2 = (activity as HomeAcivity).openOrCreateDatabase("Tasks", AppCompatActivity.MODE_PRIVATE,null)
-        database2.execSQL("CREATE TABLE IF NOT EXISTS tasks (title VARCHAR, cat VARCHAR, date VARCHAR, status VARCHAR, detail VARCHAR, user INTEGER)")
-        val cursor2 = database2.rawQuery("SELECT * FROM tasks",null)
+        database2.execSQL("CREATE TABLE IF NOT EXISTS tasks (idT INTEGER PRIMARY KEY,title VARCHAR, cat VARCHAR, date VARCHAR, status VARCHAR, detail VARCHAR, user INTEGER)")
+        val cursor2 = database2.rawQuery("SELECT * FROM tasks WHERE user = ?",sAll)
         Log.e("sd","adsa")
         val titlex = cursor2.getColumnIndex("title")
         val catx = cursor2.getColumnIndex("cat")
@@ -264,6 +310,7 @@ class List : Fragment(), AdapterView.OnItemClickListener{
         val statusx = cursor2.getColumnIndex("status")
         val detailx = cursor2.getColumnIndex("detail")
         val userx = cursor2.getColumnIndex("user")
+        val idtx = cursor2.getColumnIndex("idT")
 
         itemAdapters = ItemAdapters(requireContext().applicationContext)
         listView?.adapter = itemAdapters
@@ -275,8 +322,9 @@ class List : Fragment(), AdapterView.OnItemClickListener{
             val status = cursor2.getString(statusx)
             val detail = cursor2.getString(detailx)
             val user = cursor2.getInt(userx)
+            val idT = cursor2.getInt(idtx)
             val tempItem =
-                ItemList(R.drawable.taskicon, cat, title, "tesk", date, status, detail, user)
+                ItemList(R.drawable.taskicon, cat, title, "tesk", date, status, detail, user,idT)
             itemAdapters!!.arrayList!!.add(tempItem)
 
         }

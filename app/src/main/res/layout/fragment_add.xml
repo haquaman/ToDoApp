@@ -10,41 +10,11 @@
     <!-- TODO: Update blank fragment layout -->
 
     <Button
-        android:id="@+id/allTaskBtn8"
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="@color/material_dynamic_neutral50"
-        android:fontFamily="@font/poppins_bold"
-        android:text="İş"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        app:cornerRadius="20dp"
-        app:layout_constraintEnd_toStartOf="@+id/allTaskBtn11"
-        app:layout_constraintStart_toEndOf="@+id/allTaskBtn7"
-        app:layout_constraintTop_toBottomOf="@+id/headerText4" />
-
-    <Button
-        android:id="@+id/allTaskBtn7"
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="@color/material_dynamic_neutral50"
-        android:fontFamily="@font/poppins_bold"
-        android:text="Okul"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        app:cornerRadius="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/headerText4" />
-
-    <Button
         android:id="@+id/allTaskBtn12"
         android:layout_width="wrap_content"
         android:layout_height="65dp"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="30dp"
         android:width="350dp"
         android:backgroundTint="@color/purple_500"
@@ -56,21 +26,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName4" />
-
-    <Button
-        android:id="@+id/allTaskBtn11"
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="30dp"
-        android:backgroundTint="@color/material_dynamic_neutral50"
-        android:fontFamily="@font/poppins_bold"
-        android:text="@string/gunluk_addpages"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        app:cornerRadius="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/headerText4" />
 
     <TextView
         android:id="@+id/headerText3"
@@ -128,7 +83,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:fontFamily="@font/poppins_bold"
-        android:text="Görev Listesi"
+        android:text="Görev Ekleme"
         android:textColor="@color/white"
         android:textSize="35sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -198,15 +153,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="10dp"
         android:layout_marginEnd="30dp"
         android:width="350dp"
         android:ems="10"
-        android:hint="Eğer seçmediyseniz kategori giriniz..."
+        android:hint="Kategori giriniz..."
         android:inputType="textPersonName"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/allTaskBtn7" />
+        app:layout_constraintTop_toBottomOf="@+id/headerText4" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

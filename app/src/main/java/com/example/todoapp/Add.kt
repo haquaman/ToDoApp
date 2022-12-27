@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ListView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.fragment_add.view.*
 
@@ -69,7 +70,7 @@ class Add : Fragment() {
             val taskCat = view.findViewById<TextView>(R.id.editTextTextPersonName4)
 
             val database = (activity as HomeAcivity).openOrCreateDatabase("Tasks", AppCompatActivity.MODE_PRIVATE,null)
-            database.execSQL("CREATE TABLE IF NOT EXISTS tasks (title VARCHAR, cat VARCHAR, date VARCHAR, status VARCHAR, detail VARCHAR, user INTEGER)")
+            database.execSQL("CREATE TABLE IF NOT EXISTS tasks (idT INTEGER PRIMARY KEY, title VARCHAR, cat VARCHAR, date VARCHAR, status VARCHAR, detail VARCHAR, user INTEGER)")
             val sqlString = "INSERT INTO tasks (title, cat, date, status, detail, user) VALUES (?, ?, ?, ?, ?, ?)"
             val statement = database.compileStatement(sqlString)
             statement.bindString(1,tastTitle.text.toString())
@@ -79,6 +80,16 @@ class Add : Fragment() {
             statement.bindString(5,taskDesc.text.toString())
             statement.bindString(6,currentUser.id.toString())
             statement.execute()
+
+
+            tastTitle.text = ""
+            taskDate.text = ""
+            taskDesc.text = ""
+            taskCat.text = ""
+
+            val toast = Toast.makeText((activity as HomeAcivity), "Listeye Yeni Görev Eklenmiştir", Toast.LENGTH_LONG)
+            toast.show()
+
 
         }
 
