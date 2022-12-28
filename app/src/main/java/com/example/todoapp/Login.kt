@@ -17,13 +17,14 @@ class Login : AppCompatActivity() {
         setContentView(view)
     }
 
+    // Take Current User
     fun checkUser(): User ? {
         val strName = binding.loginName.text.toString()
         val strPass = binding.loginPass.text.toString()
         var ar = listOf<String>(strName,strPass).toTypedArray()
         val database = this.openOrCreateDatabase("Users", MODE_PRIVATE,null)
+        database.execSQL("CREATE TABLE IF NOT EXISTS users(id INTEGER PRIMARY KEY, userName VARCHAR, userSurName VARCHAR, userPass VARCHAR, userNickName VARCHAR)")
         val cursor = database.rawQuery("SELECT * FROM users WHERE userNickName = ? AND userPass = ?",ar)
-        //(userName, userSurName, userPass, userNickName)
         val idx = cursor.getColumnIndex("id")
         val userNamex = cursor.getColumnIndex("userName")
         val userSurNamex = cursor.getColumnIndex("userSurName")

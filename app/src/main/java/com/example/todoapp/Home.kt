@@ -45,8 +45,10 @@ class Home : Fragment() {
 
         val view =  inflater.inflate(R.layout.fragment_home2, container, false)
         val text = view.findViewById<TextView>(R.id.homePageHeaderTextView)
+        // Data from acticvity
         var arg = this.arguments
         var id = arg?.get("id")
+        //SQL For User
         val database = (activity as HomeAcivity).openOrCreateDatabase("Users", AppCompatActivity.MODE_PRIVATE,null)
         val cursor = database.rawQuery("SELECT * FROM users WHERE id = $id",null)
         //(userName, userSurName, userPass, userNickName)
@@ -63,6 +65,7 @@ class Home : Fragment() {
             val nick = cursor.getString(userNickNamex)
             currentUser = User(id,n,sn,p,nick)
         }
+        //HomePage Header user text
         val strName = currentUser.userName
         text.setText("Merhaba $strName")
         cursor.close()

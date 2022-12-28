@@ -42,11 +42,12 @@ class Add : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view: View = inflater.inflate(R.layout.fragment_add, container, false)
+        //data from activity
         var arg = this.arguments
         var id = arg?.get("id")
+        //SQL for task
         val database = (activity as HomeAcivity).openOrCreateDatabase("Users", AppCompatActivity.MODE_PRIVATE,null)
         val cursor = database.rawQuery("SELECT * FROM users WHERE id = $id",null)
-        //(userName, userSurName, userPass, userNickName)
         val idx = cursor.getColumnIndex("id")
         val userNamex = cursor.getColumnIndex("userName")
         val userSurNamex = cursor.getColumnIndex("userSurName")
@@ -61,6 +62,8 @@ class Add : Fragment() {
             currentUser = User(id,n,sn,p,nick)
         }
         cursor.close()
+
+        // ADD Task
         view.allTaskBtn12.setOnClickListener {
 
 
@@ -87,6 +90,7 @@ class Add : Fragment() {
             taskDesc.text = ""
             taskCat.text = ""
 
+            //Add task toast message
             val toast = Toast.makeText((activity as HomeAcivity), "Listeye Yeni Görev Eklenmiştir", Toast.LENGTH_LONG)
             toast.show()
 

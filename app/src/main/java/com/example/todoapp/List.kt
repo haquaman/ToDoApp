@@ -57,6 +57,7 @@ class List : Fragment(), AdapterView.OnItemClickListener{
         var id = arg?.get("id")
         var listView = view.findViewById<ListView>(R.id.card_view_list_view)
 
+        // Used Button
         val devamEdenler = view.findViewById<Button>(R.id.allTaskBtn2)
         val allTaskOperation = view.findViewById<Button>(R.id.allTaskBtn)
         val completedOperation = view.findViewById<Button>(R.id.allTaskBtn3)
@@ -64,7 +65,7 @@ class List : Fragment(), AdapterView.OnItemClickListener{
         val doneOperation = view.findViewById<Button>(R.id.allTaskBtn6)
         val refreshBtnOperation = view.findViewById<Button>(R.id.allTaskBtn4)
 
-
+        // Refresh button click
         refreshBtnOperation.setOnClickListener(){
             var s9 = listOf<String>(id.toString()).toTypedArray()
             val database9 = (activity as HomeAcivity).openOrCreateDatabase("Tasks", AppCompatActivity.MODE_PRIVATE,null)
@@ -98,7 +99,7 @@ class List : Fragment(), AdapterView.OnItemClickListener{
             cursor9.close()
         }
 
-
+        // Done Button click operations
         doneOperation.setOnClickListener(){
             val current = LocalDateTime.now()
             val formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
@@ -142,6 +143,8 @@ class List : Fragment(), AdapterView.OnItemClickListener{
 
         }
 
+
+        // Today Task Button Operation
         todayOperation.setOnClickListener(){
 
             val current = LocalDateTime.now()
@@ -179,6 +182,7 @@ class List : Fragment(), AdapterView.OnItemClickListener{
         }
 
 
+        // All Task Button Operation
         allTaskOperation.setOnClickListener(){
             var s1 = listOf<String>(id.toString()).toTypedArray()
             val database1 = (activity as HomeAcivity).openOrCreateDatabase("Tasks", AppCompatActivity.MODE_PRIVATE,null)
@@ -211,6 +215,8 @@ class List : Fragment(), AdapterView.OnItemClickListener{
             itemAdapters!!.arrayList = arrayList1
             cursor1.close()
         }
+
+        // ContinueTask Button Operations
         devamEdenler.setOnClickListener(){
             var deS = listOf<String>("d",id.toString()).toTypedArray()
             val database2 = (activity as HomeAcivity).openOrCreateDatabase("Tasks", AppCompatActivity.MODE_PRIVATE,null)
@@ -242,6 +248,8 @@ class List : Fragment(), AdapterView.OnItemClickListener{
             cursor2.close()
         }
 
+
+        // Completed Task Operations
         completedOperation.setOnClickListener(){
             var s3 = listOf<String>("t",id.toString()).toTypedArray()
             val database3 = (activity as HomeAcivity).openOrCreateDatabase("Tasks", AppCompatActivity.MODE_PRIVATE,null)
@@ -280,6 +288,8 @@ class List : Fragment(), AdapterView.OnItemClickListener{
         text.setText("Merhaba $user")
         */
 
+
+        // Take All task Operations
         val database = (activity as HomeAcivity).openOrCreateDatabase("Users", AppCompatActivity.MODE_PRIVATE,null)
         val cursor = database.rawQuery("SELECT * FROM users WHERE id = $id",null)
         //(userName, userSurName, userPass, userNickName)
