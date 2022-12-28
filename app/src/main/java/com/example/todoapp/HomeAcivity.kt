@@ -13,7 +13,7 @@ class HomeAcivity : AppCompatActivity() {
         var name = intent.getStringExtra("currentUserName")
         var id = intent.getIntExtra("currentUserID",1)
         replaceFragment(Home(),id)
-
+        //Fragment list
         bottomNavigationView.setOnItemSelectedListener {
             when(it.itemId){
                 R.id.home -> replaceFragment(Home(),id)
@@ -32,7 +32,7 @@ class HomeAcivity : AppCompatActivity() {
         }
     }
 
-
+    //change current fragment with data
     private fun replaceFragment(fragment: Fragment, id: Int){
         val mBundle = Bundle()
         mBundle.putInt("id",id)

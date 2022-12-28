@@ -34,6 +34,7 @@ class ItemAdapters(var context: Context) : BaseAdapter() {
     override fun getView(p0: Int, p1: View?, p2: ViewGroup?): View {
         val view:View = View.inflate(context,R.layout.car_view_item_layout_list,null)
 
+        // Delete task operation
         var deleteBTn = view.findViewById<Button>(R.id.button3)
         deleteBTn.setOnClickListener(){ view ->
 
@@ -52,6 +53,7 @@ class ItemAdapters(var context: Context) : BaseAdapter() {
 
         }
 
+        // CheckBox operation
         var chbox = view.findViewById<CheckBox>(R.id.checkBox3)
         if((getItem(p0) as ItemList).status == "t"){
             chbox.isChecked = true
